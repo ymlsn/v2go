@@ -10,7 +10,7 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 software=(Docker Docker_Caddy Docker_Caddy_cloudflare)
-operation=(安装 更新配置 更新镜像 输出日志)
+operation=(install update_config update_image logs)
 # Make sure only root can run our script
 [[ $EUID -ne 0 ]] && echo -e "[${red}Error${plain}] This script must be run as root!" && exit 1
 
