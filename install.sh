@@ -212,7 +212,7 @@ pre_install_docker_compose(){
       # Set sspanel_url
 	  echo "输入前端地址"
     read -p "(There is no default value please make sure you input the right thing):" sspanel_url
-    [ -z "${sspanel_url}" ] && sspanel_url="http://oop0.com"
+    [ -z "${sspanel_url}" ]
     echo
     echo "---------------------------"
     echo "sspanel_url = ${sspanel_url}"
@@ -222,7 +222,7 @@ pre_install_docker_compose(){
     # Set sspanel key
     echo "输入对接密钥"
     read -p "(There is no default value please make sure you input the right thing):" sspanel_key
-    [ -z "${sspanel_key}" ] && sspanel_key="NimaQu"
+    [ -z "${sspanel_key}" ]
     echo
     echo "---------------------------"
     echo "sspanel_key = ${sspanel_key}"
