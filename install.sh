@@ -10,7 +10,7 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 software=(Docker Docker_Caddy Docker_Caddy_cloudflare)
-operation=(install update_config update_image logs)
+operation=(安装 更新配置 更新镜像 输出日志)
 # Make sure only root can run our script
 [[ $EUID -ne 0 ]] && echo -e "[${red}Error${plain}] This script must be run as root!" && exit 1
 
@@ -108,8 +108,8 @@ error_detect_depends(){
 
 # Pre-installation settings
 pre_install_docker_compose(){
-    echo "Which Panel Do you use SSpanel 0， SSRpanel 1"
-    read -p "(v2ray_paneltype (Default 0):" v2ray_paneltype
+    echo "选择前端面板程序 SSpanel 0， SSRpanel 1"
+    read -p "(v2ray_paneltype (默认SSpanel):" v2ray_paneltype
     [ -z "${v2ray_paneltype}" ] && v2ray_paneltype=0
     echo
     echo "---------------------------"
@@ -117,7 +117,7 @@ pre_install_docker_compose(){
     echo "---------------------------"
     echo
     # Set sspanel node_id
-    echo "sspanel node_id"
+    echo "sspanel 节点ID"
     read -p "(Default value: 0 ):" sspanel_node_id
     [ -z "${sspanel_node_id}" ] && sspanel_node_id=0
     echo
@@ -156,8 +156,8 @@ pre_install_docker_compose(){
     echo
     echo
 
-    echo "Which connection do you prefer 0 for webapi 1 for mysql"
-    read -p "(v2ray_usemysql (Default 0):" v2ray_usemysql
+    echo "选择对接方式 0 为 webapi 1 为 数据库"
+    read -p "(v2ray_usemysql (回车默认 0):" v2ray_usemysql
     [ -z "${v2ray_usemysql}" ] && v2ray_usemysql=0
     echo
     echo "---------------------------"
@@ -166,8 +166,8 @@ pre_install_docker_compose(){
     echo
 
 
-    echo "Which docker image address will be used"
-    read -p "(image address (Default bobcoder/v2ray:go_dev):" docker_addresss
+    echo "输入docker镜像地址"
+    read -p "(image address (默认 bobcoder/v2ray:go_dev):" docker_addresss
     [ -z "${docker_addresss}" ] && docker_addresss="bobcoder/v2ray:go_dev"
     echo
     echo "---------------------------"
@@ -177,8 +177,8 @@ pre_install_docker_compose(){
 
 
 
-    echo "Which MUREGEX will be used"
-    read -p "(MUREGEX (Default %5m%id.%suffix):" MUREGEX
+    echo "混淆参数后缀"
+    read -p "(MUREGEX (默认 %5m%id.%suffix):" MUREGEX
     [ -z "${MUREGEX}" ] && MUREGEX="%5m%id.%suffix"
     echo
     echo "---------------------------"
@@ -187,8 +187,8 @@ pre_install_docker_compose(){
     echo
 
 
-    echo "Which MUSUFFIX will be used"
-    read -p "(MUSUFFIX (Default microsoft.com):" MUSUFFIX
+    echo "混淆参数表达式"
+    read -p "(MUSUFFIX (默认 microsoft.com):" MUSUFFIX
     [ -z "${MUSUFFIX}" ] && MUSUFFIX="microsoft.com"
     echo
     echo "---------------------------"
@@ -210,7 +210,7 @@ pre_install_docker_compose(){
     if [ "${v2ray_usemysql}" -eq 0 ];
         then
       # Set sspanel_url
-	  echo "Please sspanel_url"
+	  echo "输入前端地址"
     read -p "(There is no default value please make sure you input the right thing):" sspanel_url
     [ -z "${sspanel_url}" ] && sspanel_url="http://oop0.com"
     echo
@@ -220,7 +220,7 @@ pre_install_docker_compose(){
     echo
 	
     # Set sspanel key
-    echo "sspanel key"
+    echo "输入对接密钥"
     read -p "(There is no default value please make sure you input the right thing):" sspanel_key
     [ -z "${sspanel_key}" ] && sspanel_key="NimaQu"
     echo
@@ -277,8 +277,8 @@ pre_install_docker_compose(){
     echo
     fi
     # Set sspanel speedtest function
-    echo "use sspanel speedtest"
-    read -p "(sspanel speedtest: Default (6) hours every time):" sspanel_speedtest
+    echo "你打算隔多久进行一次节点网速测试"
+    read -p "(sspanel speedtest: 默认 (6) 小时):" sspanel_speedtest
     [ -z "${sspanel_speedtest}" ] && sspanel_speedtest=6
     echo
     echo "---------------------------"
@@ -287,8 +287,8 @@ pre_install_docker_compose(){
     echo
 
     # Set V2ray backend API Listen port
-    echo "Setting V2ray Grpc API Listen port"
-    read -p "(V2ray Grpc API Listen port(Default 2333):" v2ray_api_port
+    echo "请设置V2RAY的出口监听端口"
+    read -p "(V2ray Grpc API Listen port(默认 2333):" v2ray_api_port
     [ -z "${v2ray_api_port}" ] && v2ray_api_port=2333
     echo
     echo "---------------------------"
@@ -297,8 +297,8 @@ pre_install_docker_compose(){
     echo
 
     # Set Setting if the node go downwith panel
-    echo "Setting if the node go downwith panel"
-    read -p "(v2ray_downWithPanel (Default 0):" v2ray_downWithPanel
+    echo "节点是否与面板一起关闭"
+    read -p "(v2ray_downWithPanel (默认 0):" v2ray_downWithPanel
     [ -z "${v2ray_downWithPanel}" ] && v2ray_downWithPanel=0
     echo
     echo "---------------------------"
